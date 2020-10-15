@@ -81,8 +81,8 @@ extension SceneDelegate: AuthServiceDelegate {
     
     func authServiceSingIn() {
         print(#function)
-        let feedStoryboard = UIStoryboard(name: "FeedViewController", bundle: nil)
-        let feedVC = feedStoryboard.instantiateInitialViewController() as! FeedViewController
+        let feedStoryboard = UIStoryboard(name: "NewsfeedViewController", bundle: nil)
+        let feedVC = feedStoryboard.instantiateInitialViewController() as! NewsfeedViewController
         let navVC = UINavigationController(rootViewController: feedVC)
         window?.rootViewController? = navVC
     }
