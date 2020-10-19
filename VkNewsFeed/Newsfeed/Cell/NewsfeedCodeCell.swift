@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol NewsfeedCodeCellDelegate: class {
+    func revealPost(for cell: NewsfeedCodeCell)
+}
+
 final class NewsfeedCodeCell: UITableViewCell {
     
     // MARK: - Properties
     static let reuseId = "NewsfeedCodeCell"
+    weak var delegate: NewsfeedCodeCellDelegate?
     
     // Первый слой
     let cardView: UIView = {
@@ -34,10 +39,22 @@ final class NewsfeedCodeCell: UITableViewCell {
         return label
     }()
     
+    let moreTextButton: UIButton = {
+        let button = UIButton()
+        button.contentHorizontalAlignment = .left
+        button.contentVerticalAlignment = .center
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        button.setTitleColor(#colorLiteral(red: 0.4, green: 0.6235294118, blue: 0.831372549, alpha: 1), for: .normal)
+        button.setTitle("Показать полностью...", for: .normal)
+        return button
+    }()
+    
     let postImageView: WebImageView = {
         let image = WebImageView()
         return image
     }()
+    
+    let galleryCollectionView = GalleryCollectionView()
     
     let bottomView: UIView = {
         let view = UIView()
@@ -166,8 +183,13 @@ final class NewsfeedCodeCell: UITableViewCell {
         backgroundColor = .clear
         selectionStyle = .none
         
+        iconImageView.layer.cornerRadius = Constants.topViewHeight / 2
+        iconImageView.clipsToBounds = true
+        
         cardView.layer.cornerRadius = 10
         cardView.clipsToBounds = true
+        
+        moreTextButton.addTarget(self, action: #selector(moreTextButtonTapped), for: .touchUpInside)
         
         overlayFirstLayer()
         overlaySecondLayer()
@@ -180,7 +202,17 @@ final class NewsfeedCodeCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        iconImageView.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
+    
     // MARK: - Methods
+    @objc func moreTextButtonTapped() {
+        print("123")
+        delegate?.revealPost(for: self)
+    }
+    
     func set(viewModel: FeedCellViewModel) {
         
         iconImageView.set(imageURL: viewModel.iconUrlString)
@@ -193,33 +225,47 @@ final class NewsfeedCodeCell: UITableViewCell {
         viewsLabel.text = viewModel.views
         
         postLabel.frame = viewModel.sizes.postLabelFrame
-        postImageView.frame = viewModel.sizes.attachmentFrame
+        moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
+        
         bottomView.frame = viewModel.sizes.bottomViewFrame
         
-        if let photoAttachment = viewModel.photoAttachment {
+        if let photoAttachment = viewModel.photoAttachments.first, viewModel.photoAttachments.count == 1 {
             postImageView.set(imageURL: photoAttachment.photoUrlString)
             postImageView.isHidden = false
+            galleryCollectionView.isHidden = true
+            postImageView.frame = viewModel.sizes.attachmentFrame
+        } else if viewModel.photoAttachments.count > 1 {
+            galleryCollectionView.frame = viewModel.sizes.attachmentFrame
+            postImageView.isHidden = true
+            galleryCollectionView.isHidden = false
+            galleryCollectionView.set(photos: viewModel.photoAttachments)
         } else {
             postImageView.isHidden = true
+            galleryCollectionView.isHidden = true
         }
+        
     }
     
     private func overlayFirstLayer() {
         addSubview(cardView)
-        
         cardView.fillSuperview(padding: Constants.cardInsets)
     }
     
     private func overlaySecondLayer() {
         cardView.addSubview(topView)
         cardView.addSubview(postLabel)
+        cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
+        cardView.addSubview(galleryCollectionView)
         cardView.addSubview(bottomView)
         
         topView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8).isActive = true
         topView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8).isActive = true
         topView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 8).isActive = true
         topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
+            
+        // Constraints for postLabel, moreTextButton, postImageView, galleryCollectionView, bottomView
+        // не нужны так как задаются динамически
     }
     
     private func overlayThirdLayerOnTopView() {

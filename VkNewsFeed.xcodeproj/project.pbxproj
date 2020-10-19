@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3AF315E27FB6946587EEFF4D /* Pods_VkNewsFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C6651E91AD8904AB531DE6 /* Pods_VkNewsFeed.framework */; };
+		EEE2A777253B41860079D31A /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2A776253B41860079D31A /* GalleryCollectionView.swift */; };
+		EEE2A77B253B42350079D31A /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2A77A253B42350079D31A /* GalleryCollectionViewCell.swift */; };
+		EEE2A77E253C4BD60079D31A /* RowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2A77D253C4BD60079D31A /* RowLayout.swift */; };
 		EEFCB76425272D81006B6ECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFCB76325272D81006B6ECA /* AppDelegate.swift */; };
 		EEFCB76625272D81006B6ECA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFCB76525272D81006B6ECA /* SceneDelegate.swift */; };
 		EEFCB76825272D81006B6ECA /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFCB76725272D81006B6ECA /* AuthViewController.swift */; };
@@ -39,6 +42,9 @@
 /* Begin PBXFileReference section */
 		59C7FDD10788518BEA360E2E /* Pods-VkNewsFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkNewsFeed.debug.xcconfig"; path = "Target Support Files/Pods-VkNewsFeed/Pods-VkNewsFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		661587A513A453D89E358731 /* Pods-VkNewsFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkNewsFeed.release.xcconfig"; path = "Target Support Files/Pods-VkNewsFeed/Pods-VkNewsFeed.release.xcconfig"; sourceTree = "<group>"; };
+		EEE2A776253B41860079D31A /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
+		EEE2A77A253B42350079D31A /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEE2A77D253C4BD60079D31A /* RowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowLayout.swift; sourceTree = "<group>"; };
 		EEFCB76025272D81006B6ECA /* VkNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEFCB76325272D81006B6ECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEFCB76525272D81006B6ECA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +95,16 @@
 				661587A513A453D89E358731 /* Pods-VkNewsFeed.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EEE2A775253B416C0079D31A /* GalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				EEE2A776253B41860079D31A /* GalleryCollectionView.swift */,
+				EEE2A77D253C4BD60079D31A /* RowLayout.swift */,
+				EEE2A77A253B42350079D31A /* GalleryCollectionViewCell.swift */,
+			);
+			path = GalleryView;
 			sourceTree = "<group>";
 		};
 		EEFCB75725272D81006B6ECA = {
@@ -157,6 +173,7 @@
 		EEFCB7C425306A09006B6ECA /* Newsfeed */ = {
 			isa = PBXGroup;
 			children = (
+				EEE2A775253B416C0079D31A /* GalleryView */,
 				EEFCB7D825308720006B6ECA /* Cell */,
 				EEFCB7D4253070CF006B6ECA /* NewsfeedViewController.storyboard */,
 				EEFCB7C925306A4F006B6ECA /* NewsfeedViewController.swift */,
@@ -315,10 +332,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE2A77E253C4BD60079D31A /* RowLayout.swift in Sources */,
 				EEFCB7A1252DD347006B6ECA /* FeedResponse.swift in Sources */,
 				EEFCB7D025306A4F006B6ECA /* NewsfeedViewController.swift in Sources */,
 				EEFCB76825272D81006B6ECA /* AuthViewController.swift in Sources */,
 				EEFCB76425272D81006B6ECA /* AppDelegate.swift in Sources */,
+				EEE2A77B253B42350079D31A /* GalleryCollectionViewCell.swift in Sources */,
 				EEFCB7CC25306A4F006B6ECA /* NewsfeedPresenter.swift in Sources */,
 				EEFCB7CE25306A4F006B6ECA /* NewsfeedRouter.swift in Sources */,
 				EEFCB76625272D81006B6ECA /* SceneDelegate.swift in Sources */,
@@ -334,6 +353,7 @@
 				EEFCB77E252737C4006B6ECA /* AuthService.swift in Sources */,
 				EEFCB79C2527C7C7006B6ECA /* API.swift in Sources */,
 				EEFCB7EA25325550006B6ECA /* String+Height.swift in Sources */,
+				EEE2A777253B41860079D31A /* GalleryCollectionView.swift in Sources */,
 				EEFCB7DA25308733006B6ECA /* NewsfeedCell.swift in Sources */,
 				EEFCB7D125306A4F006B6ECA /* NewsfeedInteractor.swift in Sources */,
 			);
