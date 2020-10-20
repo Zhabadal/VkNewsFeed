@@ -16,8 +16,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56W-Ud-01J" customClass="GradientView" customModule="VkNewsFeed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="1" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="1" green="0.81568627450980391" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7eK-vL-w9L">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="dl5-Ar-9t7" id="70Z-87-s89"/>
@@ -26,9 +38,13 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FU8-KB-2OL"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="7eK-vL-w9L" secondAttribute="bottom" id="G86-hK-9Lb"/>
+                            <constraint firstItem="FU8-KB-2OL" firstAttribute="trailing" secondItem="56W-Ud-01J" secondAttribute="trailing" id="4D9-8G-yIx"/>
+                            <constraint firstItem="FU8-KB-2OL" firstAttribute="bottom" secondItem="7eK-vL-w9L" secondAttribute="bottom" id="G86-hK-9Lb"/>
+                            <constraint firstItem="56W-Ud-01J" firstAttribute="top" secondItem="FU8-KB-2OL" secondAttribute="top" id="LMJ-UP-MQL"/>
+                            <constraint firstItem="FU8-KB-2OL" firstAttribute="bottom" secondItem="56W-Ud-01J" secondAttribute="bottom" id="Q9R-Cl-VKM"/>
+                            <constraint firstItem="56W-Ud-01J" firstAttribute="leading" secondItem="FU8-KB-2OL" secondAttribute="leading" id="SMd-5z-dZ4"/>
                             <constraint firstItem="7eK-vL-w9L" firstAttribute="top" secondItem="UUK-Ab-1CA" secondAttribute="top" id="eZE-gh-mam"/>
                             <constraint firstItem="7eK-vL-w9L" firstAttribute="leading" secondItem="FU8-KB-2OL" secondAttribute="leading" id="jej-WL-dij"/>
                             <constraint firstItem="7eK-vL-w9L" firstAttribute="trailing" secondItem="FU8-KB-2OL" secondAttribute="trailing" id="p30-Ll-8a4"/>
@@ -47,8 +63,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
