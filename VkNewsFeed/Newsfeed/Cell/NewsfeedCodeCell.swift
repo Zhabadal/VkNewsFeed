@@ -225,8 +225,8 @@ final class NewsfeedCodeCell: UITableViewCell {
     }
     
     // MARK: - Methods
+    
     @objc func moreTextButtonTapped() {
-        print("123")
         delegate?.revealPost(for: self)
     }
     
@@ -262,6 +262,8 @@ final class NewsfeedCodeCell: UITableViewCell {
         }
         
     }
+    
+    // MARK: - Layers setting
     
     private func overlayFirstLayer() {
         addSubview(cardView)
